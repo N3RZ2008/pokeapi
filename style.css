@@ -24,7 +24,7 @@ body {
 }
 
 .card {
-    background-color: rgb(235, 235, 235);
+    /* background-color:#FDDFDF; */
     border-radius: 15px;
     display: flex;
     flex-direction: column;
