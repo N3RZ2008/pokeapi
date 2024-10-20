@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
+<body onload="renderCards('')">
     <h1>Pokedex</h1>
 
-    <div class="pokeContainer" id="pokeContainer">
+    <div class="main">
+        <div class="search" id="search">
+            <label for="sName">Name: </label>
+            <input type="text" name="sName" id="sName" onchange="setSelector(this)">
+        </div>
+        <div class="pokeContainer" id="pokeContainer"></div>
+    </div>
 
     </div>
 

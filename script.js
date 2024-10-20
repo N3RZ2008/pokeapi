@@ -26,9 +26,36 @@ async function fetchPoke(id) {
     return data;
 }
 
-async function createCards(data) {
+function setSelector(content) {
+    const selector = content.value.toUpperCase();
+    renderCards(selector)
+}
+
+async function filter(selector, i) {
+    const data = await fetchPoke(i);
+    if (data.name.toUpperCase().includes(selector)) {
+        return true;
+    }
+    return false;
+}
+
+async function renderCards(selector) {
+    const div = document.querySelector("#pokeContainer")
+    if (div.hasChildNodes()) {
+        while (div.hasChildNodes()) {
+            div.removeChild(div.firstChild);
+        }
+    }
     for (let i = 1; i <= pokeCount; i++) {
-        const card = document.createElement('div');
+        const match = await filter(selector, i);
+        if (selector == 0 || match) {
+            createCard(i);
+        }
+    }
+}
+
+async function createCard(i) {
+    const card = document.createElement('div');
         card.classList.add("card");
         const data = await fetchPoke(i);
 
@@ -55,7 +82,4 @@ async function createCards(data) {
 
         card.innerHTML = pokeInnerHTML;
         document.querySelector("#pokeContainer").appendChild(card);
-    }
 }
-
-createCards()
