@@ -19,6 +19,13 @@ const colors = {
 
 const mainTypes = Object.keys(colors);
 
+document.getElementById('sName').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById('btnProcurar').click();
+    }
+});
+
 async function fetchPoke(id) {
     const url = "https://pokeapi.co/api/v2/pokemon";
     const response = await fetch(`${url}/${id}`);
@@ -26,9 +33,9 @@ async function fetchPoke(id) {
     return data;
 }
 
-function setSelector(content) {
-    const selector = content.value.toUpperCase();
-    renderCards(selector)
+function setSelector() {
+    const selector = document.getElementById("sName").value
+    renderCards(selector.toUpperCase())
 }
 
 async function filter(selector, i) {

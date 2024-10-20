@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    
 </head>
 <body onload="renderCards('')">
     <h1>Pokedex</h1>
@@ -13,12 +13,13 @@
     <div class="main">
         <div class="search" id="search">
             <label for="sName">Name: </label>
-            <input type="text" name="sName" id="sName" onchange="setSelector(this)">
+            <input type="text" name="sName" id="sName">
+            <button id="btnProcurar" onclick="setSelector()">Procurar</a>
         </div>
         <div class="pokeContainer" id="pokeContainer"></div>
     </div>
 
     </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
